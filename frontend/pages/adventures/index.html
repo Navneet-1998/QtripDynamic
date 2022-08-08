@@ -130,7 +130,7 @@
             //Fetches the adventures for the particular city
             adventures = await fetchAdventures(city);
 
-            //Applies filters on the adventures list
+            //Applies filters on the a  dventures list
             let filteredAdventures = filterFunction(adventures, filters);
 
             //Updates the filtered adventures list to the DOM
@@ -146,6 +146,12 @@
             // TODO: MODULE_FILTERS
             // 1. Change the DOM to show the selected duration filter. Use the provided input event
             // 2. Invoke saveFiltersToLocalStorage here
+            document.getElementById("data").textContent = "";
+
+            filters["duration"] = event.target.value;
+            let filteredAdventures = filterFunction(adventures, filters);
+            addAdventureToDOM(filteredAdventures);
+            saveFiltersToLocalStorage(filters);
 
         }
 
@@ -154,6 +160,14 @@
             // TODO: MODULE_FILTERS
             // 1. Change the DOM to clear the Duration filter. Refer clearCategory() below
             // 2. Invoke saveFiltersToLocalStorage here
+            document.getElementById("duration-select").selectedIndex = 0;
+            document.getElementById("data").textContent = "";
+
+            filters["duration"] = "";
+            let filteredAdventures = filterFunction(adventures, filters);
+            addAdventureToDOM(filteredAdventures);
+            saveFiltersToLocalStorage(filters);
+
 
         }
 
@@ -176,6 +190,7 @@
             addAdventureToDOM(filteredAdventures);
 
             // TODO: MODULE_FILTERS
+            saveFiltersToLocalStorage(filters);  
             // 1. Invoke saveFiltersToLocalStorage here
         }
 
@@ -189,6 +204,7 @@
             addAdventureToDOM(filteredAdventures);
 
             // TODO: MODULE_FILTERS
+            saveFiltersToLocalStorage(filters);
             // 1. Invoke saveFiltersToLocalStorage here
         }
 

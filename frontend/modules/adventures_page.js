@@ -68,60 +68,56 @@ function filterByDuration(list, low, high) {
   return filteredList;
 }
 
-//Implementation of filtering by category which takes in a list of adventures, list of categories to be filtered upon and returns a filtered list of adventures.
+
 function filterByCategory(list, categoryList) {
   // TODO: MODULE_FILTERS
   // 1. Filter adventures based on their Category and return filtered list
-  // let filteredList =[];
-  // categoryList.forEach((category) => {
-  //   list.forEach((key) => {
-  //     if(key.category === category){
-  //       filteredList.push(key);
-  //     }
-  //   });
-  // });
-  const filteredList =list.filter((adventure) => {
-    return (categoryList.category.includes(adventure.category))
-  });
-  return filteredList;
+
+  let filteredList=[];
+  console.log(list);
+  list.filter(function (e) {
+    if(categoryList.includes(e.category))
+      filteredList.push(e);   
+      });
+
+      return filteredList;
 
 }
 
-// // filters object looks like this filters = { duration: "", category: [] };
+// filters object looks like this filters = { duration: "", category: [] };
 
-// //Implementation of combined filter function that covers the following cases :
-// // 1. Filter by duration only
-// // 2. Filter by category only
-// // 3. Filter by duration and category together
+//Implementation of combined filter function that covers the following cases :
+// 1. Filter by duration only
+// 2. Filter by category only
+// 3. Filter by duration and category together
 
 function filterFunction(list, filters) {
+  
+
   // TODO: MODULE_FILTERS
   // 1. Handle the 3 cases detailed in the comments above and return the filtered list of adventures
   // 2. Depending on which filters are needed, invoke the filterByDuration() and/or filterByCategory() methods
-  let filterdlist ;
-    let filterDuration = filters.duration;
-    const filterDurationArr = filterDuration.split("-");
-     
+
+  let filteredlist =[]
+  let arr=filters["duration"].split("-")
+
+  // TODO: MODULE_FILTERS
+  // 1. Handle the 3 cases detailed in the comments above and return the filtered list of adventures
+  // 2. Depending on which filters are needed, invoke the filterByDuration() and/or filterByCategory() methods
+if(filters["category"].length>0&&filters["duration"].length>0){
+
+ filteredlist=filterByCategory(list,filters.category)
+ filteredlist=filterByDuration(filteredlist,parseInt(arr[0]),parseInt(arr[1]))
+}else if(filters["category"].length>0){
+  filteredlist=filterByCategory(list,filters.category);
+}else if(filters["duration"].length>0){
+ filteredlist=filterByDuration(list,parseInt(arr[0]),parseInt(arr[1]))
+}else{
+  return list;
+}
+  // Place holder for functionality to work in the Stubs
+ return filteredlist;
   
-     
-    let low = filterDurationArr[0]; 
-    let high = filterDurationArr[1]
-    if(filters.duration == "" && filters.category.length==0 ){
-      filterdlist = list;
-    }
-    else if(filters.duration == "" && filters.category.length>0){
-      filterdlist = filterByCategory(list, filters);
-    }
-    else if(filters.duration !== "" && filters.category.length==0){
-      filterdlist = filterByDuration(list,low,high)
-    }
-    else{
-      filterdlist = filterByDuration(filterByCategory(list,filters),low,high)
-    }
-    
-     
-    // Place holder for functionality to work in the Stubs
-    return filterdlist;
 }
 
 //Implementation of localStorage API to save filters to local storage. This should get called everytime an onChange() happens in either of filter dropdowns

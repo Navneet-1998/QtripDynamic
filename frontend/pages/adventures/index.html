@@ -126,11 +126,13 @@
 
             //Fetches the City from URL query param (here : window.location.search is an in-built browser property that returns the query param from URL, example: http://localhost:8081/?city=bengaluru => window.location.search would return "?city=bengaluru")
             let city = await getCityFromURL(window.location.search);
-
+            // console.log(window.location.search);
+            // console.log(city);
+            
             //Fetches the adventures for the particular city
             adventures = await fetchAdventures(city);
 
-            //Applies filters on the a  dventures list
+            //Applies filters on the adventures list
             let filteredAdventures = filterFunction(adventures, filters);
 
             //Updates the filtered adventures list to the DOM
@@ -219,9 +221,6 @@
         window.clearDuration = clearDuration;
         window.clearCategory = clearCategory;
     </script>
-
-  
-
 </body>
 
 </html>

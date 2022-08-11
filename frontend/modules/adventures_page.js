@@ -74,7 +74,6 @@ function filterByCategory(list, categoryList) {
   // 1. Filter adventures based on their Category and return filtered list
 
   let filteredList=[];
-  console.log(list);
   list.filter(function (e) {
     if(categoryList.includes(e.category))
       filteredList.push(e);   

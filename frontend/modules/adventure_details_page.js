@@ -87,7 +87,7 @@ function conditionalRenderingOfReservationPanel(adventure) {
   {
     document.getElementById("reservation-panel-sold-out").style.display ="none";
     document.getElementById("reservation-panel-available").style.display ="block";
-    document.getElementById("reservation-person-cost").innerText=adventure["costPerHead"];
+    document.getElementById("reservation-person-cost").innerHTML=adventure["costPerHead"];
   } 
   else 
   {

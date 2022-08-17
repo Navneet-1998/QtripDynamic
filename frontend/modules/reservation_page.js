@@ -44,6 +44,8 @@ function addReservationToTable(reservations) {
 
  for(let i=0;i<reservations.length;i++)
  {  let  date=new Date(reservations[i].date);
+     console.log(date);
+     console.log(reservations[0].date)
     let timing=new Date(reservations[i].time);
     let month=timing.toLocaleString(undefined,{month:"long"})
     let day=timing.getDate();

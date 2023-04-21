@@ -16,7 +16,7 @@ async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
 try {
-    const result = await fetch(config.backendEndpoint + "/adventures?city="+city);
+    const result = await fetch(config.backendEndpoint + `/adventures?city=${city}`);
     const data = await result.json();
     return data;
   } catch (e) {
